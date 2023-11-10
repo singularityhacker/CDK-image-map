@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CDK Image Map</title>
+    <script>
+
+
+
+        function resizeMap() {
+            var image = document.getElementById('map-image');
+            var originalWidth = 4056; // Replace with your image's original width
+            var currentWidth = image.offsetWidth;
+
+            var scale = currentWidth / originalWidth;
+
+            var areas = document.getElementsByTagName('area');
+            for (var i = 0; i < areas.length; i++) {
+                var coords = areas[i].dataset.originalCoords.split(',');
+                var newCoords = coords.map(function(coord) {
+                    return Math.round(coord * scale);
+                }).join(',');
+                areas[i].coords = newCoords;
+            }
+        }
+
+        window.onload = resizeMap;
+        window.onresize = resizeMap;
+
+    </script>
+</head>
+<body>
+    <img src="CDK.jpg" id="map-image" usemap="#image-map" style="max-width:100%;height:auto;">
+
+    <map name="image-map">
+
+    <area target="_blank" alt="area 1" title="area 1" href="https://www.google.com/" coords="466,771,699,1007" data-original-coords="466,771,699,1007" shape="rect">
+    <area target="_blank" alt="area 2" title="area 2" href="https://www.google.com/" coords="1193,434,1584,821" data-original-coords="1193,434,1584,821" shape="rect">
+    <area target="_blank" alt="area 3" title="area 3" href="https://www.google.com/" coords="1194,1069,1584,1463" data-original-coords="1194,1069,1584,1463" shape="rect">
+    <area target="_blank" alt="area 4" title="area 4" href="https://www.google.com/" coords="1985,810,2372,1193" data-original-coords="1985,810,2372,1193" shape="rect">
+    <area target="_blank" alt="area 5" title="area 5" href="https://www.google.com/" coords="2981,387,3221,624" data-original-coords="2981,387,3221,624" shape="rect">
+    <area target="_blank" alt="area 6" title="area 6" href="https://www.google.com/" coords="2655,1014,2759,1125" data-original-coords="2655,1014,2759,1125" shape="rect">
+    <area target="_blank" alt="area 7" title="area 7" href="https://www.google.com/" coords="3046,1018,3164,1136" data-original-coords="3046,1018,3164,1136" shape="rect">
+    <area target="_blank" alt="area 8" title="area 8" href="https://www.google.com/" coords="3046,1412,3160,1530" data-original-coords="3046,1412,3160,1530" shape="rect">
+    <area target="_blank" alt="area 9" title="area 9" href="https://www.google.com/" coords="3421,1013,3547,1129" data-original-coords="3421,1013,3547,1129" shape="rect">
+
+    </map>
+</body>
+</html>
